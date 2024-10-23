@@ -12,20 +12,6 @@ const WarehouseGame = () => {
   const [warehouseGrid, setWarehouseGrid] = useState([]);
   const targetScore = 500;
   
-  // Rest of the component code remains exactly the same...
-  // [Previous code continues unchanged]
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Trophy, Box, Timer } from 'lucide-react';
-
-const WarehouseGame = () => {
-  const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(60);
-  const [gameActive, setGameActive] = useState(false);
-  const [currentOrder, setCurrentOrder] = useState(null);
-  const [warehouseGrid, setWarehouseGrid] = useState([]);
-  const targetScore = 500;
-  
   // Generate random storage locations
   const generateWarehouseGrid = () => {
     const items = ['Electronics', 'Clothing', 'Food', 'Books', 'Toys'];
@@ -159,6 +145,9 @@ const WarehouseGame = () => {
       </CardContent>
     </Card>
   );
+};
+
+export default WarehouseGame;
 };
 
 export default WarehouseGame;
