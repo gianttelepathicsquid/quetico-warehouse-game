@@ -1,0 +1,14 @@
+/app
+  /components
+    WarehouseGame.jsx
+  /lib
+    utils.js
+  /components
+    /ui
+      card.jsx
+  layout.js
+  page.js
+package.json
+tailwind.config.js
+next.config.js
+.gitignore
