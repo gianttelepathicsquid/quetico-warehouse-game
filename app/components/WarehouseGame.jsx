@@ -15,7 +15,14 @@ const WarehouseGame = () => {
   // Generate random storage locations
   const generateWarehouseGrid = () => {
     const items = ['Electronics', 'Clothing', 'Food', 'Books', 'Toys'];
-    const colors = ['bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-red-500', 'bg-purple-500'];
+    const colors = {
+      'Electronics': 'bg-blue-500 hover:bg-blue-600',
+      'Clothing': 'bg-purple-500 hover:bg-purple-600',
+      'Food': 'bg-green-500 hover:bg-green-600',
+      'Books': 'bg-yellow-500 hover:bg-yellow-600',
+      'Toys': 'bg-red-500 hover:bg-red-600'
+    };
+    
     const grid = [];
     
     for (let i = 0; i < 16; i++) {
@@ -23,7 +30,7 @@ const WarehouseGame = () => {
       grid.push({
         id: i,
         item: items[randomIndex],
-        color: colors[randomIndex],
+        color: colors[items[randomIndex]],
         isActive: false
       });
     }
@@ -102,14 +109,14 @@ const WarehouseGame = () => {
         {!gameActive && (
           <button
             onClick={startGame}
-            className="w-full p-4 mb-4 text-white bg-green-500 rounded-lg hover:bg-green-600"
+            className="w-full p-4 mb-4 text-white bg-green-500 rounded-lg hover:bg-green-600 transition-colors duration-200 shadow-md hover:shadow-lg"
           >
             Start Game
           </button>
         )}
 
         {gameActive && currentOrder && (
-          <div className="mb-4 p-4 bg-gray-100 rounded-lg">
+          <div className="mb-4 p-4 bg-gray-100 rounded-lg shadow-md">
             <div className="text-lg font-semibold">Current Order:</div>
             <div className="flex items-center">
               <Box className="w-5 h-5 mr-2" />
@@ -123,7 +130,10 @@ const WarehouseGame = () => {
             <button
               key={cell.id}
               onClick={() => handleCellClick(cell)}
-              className={`${cell.color} p-4 rounded-lg text-white font-semibold h-24 flex items-center justify-center transform hover:scale-105 transition-transform ${!gameActive ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`${cell.color} p-4 rounded-lg text-white font-semibold h-24 
+                flex items-center justify-center transform hover:scale-105 
+                transition-all duration-200 ${!gameActive ? 'opacity-50 cursor-not-allowed' : ''}
+                shadow-md hover:shadow-lg`}
               disabled={!gameActive}
             >
               {cell.item}
@@ -132,7 +142,7 @@ const WarehouseGame = () => {
         </div>
 
         {!gameActive && score > 0 && (
-          <div className="mt-4 p-4 bg-yellow-100 rounded-lg text-center">
+          <div className="mt-4 p-4 bg-yellow-100 rounded-lg text-center shadow-md">
             <div className="text-xl font-bold">Game Over!</div>
             <div>Final Score: {score}</div>
             {score >= targetScore ? (
@@ -142,7 +152,7 @@ const WarehouseGame = () => {
             )}
           </div>
         )}
-</CardContent>
+      </CardContent>
     </Card>
   );
 };
