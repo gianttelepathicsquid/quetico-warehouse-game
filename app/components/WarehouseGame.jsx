@@ -142,12 +142,9 @@ const WarehouseGame = () => {
             )}
           </div>
         )}
-      </CardContent>
+</CardContent>
     </Card>
   );
-};
-
-export default WarehouseGame;
 };
 
 export default WarehouseGame;
